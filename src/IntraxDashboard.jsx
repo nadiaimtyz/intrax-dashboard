@@ -760,13 +760,14 @@ case "dashboard":
                 <div className="overflow-x-auto mt-4">
                   <table className="min-w-full text-sm text-left">
                     <thead>
-                      <tr className="bg-gray-100">
+                      <tr className="bg-gray-100 text-center">
                         <th className="py-2 px-4">Nama Pengirim</th>
                         <th className="py-2 px-4">Masalah</th>
                         <th className="py-2 px-4">Status</th>
                         <th className="py-2 px-4">SLA</th>
                         <th className="py-2 px-4">Diselesaikan Oleh</th>
                         <th className="py-2 px-4">Aksi</th>
+                        <th className="py-2 px-4">Feedback</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -814,6 +815,13 @@ case "dashboard":
                               <span className="text-grey-600 font-semibold text-sm ml-2">Otomatis</span>
                             )}
                           </td>
+                         <td className="py-2 px-4">
+        {/* Feedback manual berdasarkan index */}
+        {ticket.status === 'Diselesaikan oleh Chatbot' && ticket.sender === "Tania" && "⭐⭐⭐⭐⭐"}
+        {ticket.status === 'Diselesaikan oleh CS' && ticket.sender === "Salsa" && "⭐⭐⭐⭐"}
+        {ticket.status === 'Diselesaikan oleh CS' && ticket.sender === "Bayu" && "Belum ada"}
+        {(ticket.status !== 'Diselesaikan oleh Chatbot' && ticket.status !== 'Diselesaikan oleh CS') && "Belum ada"}
+      </td>
                         </tr>
                       ))}
                     </tbody>
